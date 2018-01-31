@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface GymClassRepository extends MongoRepository<GymClass, String> {
 	
 	GymClass findById(String id);
-	List<GymClass> findByPrice(String MaxPrice);
-	
+	List<GymClass> findBypriceLessThan(int MaxPrice);
+	List<GymClass> findBygymClassFullIsFalse();
 }
 

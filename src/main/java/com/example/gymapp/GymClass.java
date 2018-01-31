@@ -14,8 +14,8 @@ public class GymClass {
 	 private String name;
 	 private String description;
 	 @Indexed(direction =IndexDirection.ASCENDING)
-	 private String price;
-	 private String duration;
+	 private int price;
+	 private int duration;
 	 private int maxNumber;
 	 private int numberOfPar;  //number of participants
 	 private Boolean gymClassFull = false;
@@ -26,7 +26,7 @@ public class GymClass {
 			
 		} 
 	 
-	 public GymClass(String name, String description, String price, String duration, int maxNumber,
+	 public GymClass(String name, String description, int price, int duration, int maxNumber,
 				int numberOfPar, Boolean gymClassFull) {
 			super();
 			this.name = name;
@@ -56,16 +56,16 @@ public class GymClass {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getDuration() {
+	public int getDuration() {
 		return duration;
 	}
-	public void setDuration(String duration) {
+	public void setDuration(int duration) {
 		this.duration = duration;
 	}
 	public int getMaxNumber() {

@@ -23,8 +23,8 @@ public class DbSeeder implements CommandLineRunner{
 		GymClass Zumba = new GymClass(
 				"Zumba",
 				"run you fatass",
-				"30",
-				"45",
+				30,
+				45,
 				20,
 				0,
 				false
@@ -32,17 +32,17 @@ public class DbSeeder implements CommandLineRunner{
 		GymClass Rumba = new GymClass(
 				"Rumba",
 				"Dance you fatass",
-				"35",
-				"50",
+				35,
+				50,
 				20,
 				0,
-				false
+				true
 				);
 		GymClass Gumba = new GymClass(
 				"Gumba",
 				"Run faster!",
-				"40",
-				"60",
+				40,
+				60,
 				20,
 				0,
 				false

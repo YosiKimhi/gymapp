@@ -41,7 +41,7 @@ public class GymClassController {
 	
 	@DeleteMapping("/{id}") 
 	public void delete(@PathVariable("id") String id)
-	{
+	{ 
 		this.gymClassRepository.delete(id);
 	}
 	
@@ -52,5 +52,17 @@ public class GymClassController {
 		 return gymClass;
 	}
 	
+	@GetMapping("/price/{maxPrice}")
+	public List<GymClass> getByPrice(@PathVariable("maxPrice") int maxPrice )
+	
+	{	
+		List<GymClass> gymClasses = this.gymClassRepository.findBypriceLessThan(maxPrice);
+		return gymClasses;
+	}
+	@GetMapping("/available")
+	public List<GymClass> getByClassFullIsFalse(){
+		List<GymClass> gymClasses= this.gymClassRepository.findBygymClassFullIsFalse();
+		return gymClasses;
+	}
 	
 }
