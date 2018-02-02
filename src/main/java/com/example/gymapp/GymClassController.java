@@ -2,6 +2,7 @@ package com.example.gymapp;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping ("/gymclasses")
+@CrossOrigin("*")
 public class GymClassController {
 	
 	private GymClassRepository gymClassRepository;
@@ -27,15 +29,18 @@ public class GymClassController {
 		return gymclasses;
 	}
 	
-	@PutMapping
+	@PostMapping
 	public void insert (@RequestBody GymClass gymclass)
 	{
-		this.gymClassRepository.insert(gymclass);
+		this.gymClassRepository.save(gymclass);
 	}
+
+
 	
-	@PostMapping
+	@PutMapping
 	public void update (@RequestBody GymClass gymclass)
 	{
+		
 		this.gymClassRepository.save(gymclass);
 	}
 	
@@ -57,6 +62,12 @@ public class GymClassController {
 	
 	{	
 		List<GymClass> gymClasses = this.gymClassRepository.findBypriceLessThan(maxPrice);
+		return gymClasses;
+	}
+	@GetMapping("/numberofpar/{numberOfPar}")
+	public List<GymClass> getBynumberOfPar(@PathVariable("numberOfPar") int numberOfPar )
+	{	
+		List<GymClass> gymClasses = this.gymClassRepository.findBynumberOfParGreaterThan(numberOfPar);
 		return gymClasses;
 	}
 	@GetMapping("/available")

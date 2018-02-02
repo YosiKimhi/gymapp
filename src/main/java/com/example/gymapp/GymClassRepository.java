@@ -11,5 +11,6 @@ public interface GymClassRepository extends MongoRepository<GymClass, String> {
 	GymClass findById(String id);
 	List<GymClass> findBypriceLessThan(int MaxPrice);
 	List<GymClass> findBygymClassFullIsFalse();
-}
+	List<GymClass> findBynumberOfParGreaterThan(int numberOfPar);
+ }
 

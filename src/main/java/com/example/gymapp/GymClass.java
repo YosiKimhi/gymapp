@@ -1,5 +1,8 @@
 package com.example.gymapp;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -10,31 +13,38 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class GymClass {
 	
 	@Id
-	 private String id;	 
-	 private String name;
-	 private String description;
-	 @Indexed(direction =IndexDirection.ASCENDING)
-	 private int price;
-	 private int duration;
-	 private int maxNumber;
-	 private int numberOfPar;  //number of participants
-	 private Boolean gymClassFull = false;
+	private String id;	 
+	private String name;
+	private String description;
+	private String day;
+	private String time;
+	private String pictureUrl;
+	@Indexed(direction =IndexDirection.ASCENDING)
+	private int price;
+	private int duration;
+	private int maxNumber;
+	private int numberOfPar;  //number of participants
+	private List<User> users;
+	private Boolean gymClassFull = false;
 	 
 	 
-	 public GymClass() {
-			super();
-			
-		} 
-	 
-	 public GymClass(String name, String description, int price, int duration, int maxNumber,
-				int numberOfPar, Boolean gymClassFull) {
+	
+	
+	 protected GymClass() {this.users = new ArrayList<>();}
+
+	 public GymClass(String name, String description,String day,String time, String pictureUrl, int price, int duration, int maxNumber,
+				int numberOfPar,List<User> users, Boolean gymClassFull) {
 			super();
 			this.name = name;
 			this.description = description;
+			this.day = day;
+			this.time =time;
+			this.pictureUrl =pictureUrl;
 			this.price = price;
 			this.duration = duration;
 			this.maxNumber = maxNumber;
 			this.numberOfPar = numberOfPar;
+			this.users = users;
 			this.gymClassFull = gymClassFull;
 		} 
 	 
@@ -85,5 +95,37 @@ public class GymClass {
 	}
 	public void setGymClassFull(Boolean gymClassFull) {
 		this.gymClassFull = gymClassFull;
+	}
+
+	public String getPictureUrl() {
+		return pictureUrl;
+	}
+
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 }
